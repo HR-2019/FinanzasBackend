@@ -176,18 +176,18 @@ public class BonoServiceImpl implements BonoService {
 
     public double calcularTEA(int tipoTasaInteres, float tasaInteres, int diasAno, int diasCapitalizacion){
         if (tipoTasaInteres == 1){ // Nominal
-            return (double) ((Math.pow((1 + (tasaInteres / 100) / (diasAno / diasCapitalizacion)), diasAno / diasCapitalizacion) - 1) * 100);
+            return (double) ((Math.pow((1 + (tasaInteres / 100) / (double) (diasAno / diasCapitalizacion)), (double) diasAno / diasCapitalizacion) - 1) * 100);
         } else { // Efectiva
             return tasaInteres;
         }
     }
 
     public double calcularTasaEfectivaPeriodo(double tasaEfectivaAnual, int frecuenciaCupon, int diasAno){
-        return (double) ((Math.pow(1 + tasaEfectivaAnual / 100, frecuenciaCupon / diasAno) - 1) * 100);
+        return (double) ((Math.pow(1 + tasaEfectivaAnual / 100, (double) frecuenciaCupon / diasAno) - 1) * 100);
     }
 
     public double calcularCokPeriodo(float tasaAnualDescuento, int frecuenciaCupon, int diasAno){
-        return (double) ((Math.pow(1 + tasaAnualDescuento / 100, frecuenciaCupon / diasAno) - 1) * 100);
+        return (double) ((Math.pow(1 + tasaAnualDescuento / 100, (double) frecuenciaCupon / diasAno) - 1) * 100);
     }
 
     public float calcularCostesInicialesEmisor(float porcentajeEstructuracion, float porcentajeColocacion, float porcentajeFlotacion, float porcentajeCavali, float valorComercial){

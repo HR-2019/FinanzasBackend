@@ -42,4 +42,10 @@ public class BonoController {
         return new FinanzasResponse<>("200","Bono calculado" , bonoService.calculate(id));
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/delete")
+    FinanzasResponse<String> deleteBono(@RequestParam Long id) throws Exception{
+        return new FinanzasResponse<>("200","Bono eliminado" , bonoService.deleteBono(id));
+    }
+
 }
