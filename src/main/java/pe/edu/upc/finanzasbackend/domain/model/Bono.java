@@ -3,6 +3,8 @@ package pe.edu.upc.finanzasbackend.domain.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -66,5 +68,10 @@ public class Bono extends AuditModel{
 
     @Column(name = "porcentaje_cavali")
     private Float porcentajeCavali;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Usuario usuario;
 
 }
